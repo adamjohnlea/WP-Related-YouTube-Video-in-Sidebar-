@@ -72,7 +72,7 @@ function wprys_youtube_handler() {
     $value = get_post_custom();
     $youtube_link = esc_attr($value['wprys_youtube'][0]);
     // var_dump($value);
-    echo '<label for="wprys_youtube">YouTube Video Link</label><input type="text" id="wprys_youtube" name="wprys_youtube" value="'.$youtube_link.'" />';
+    echo '<label for="wprys_youtube">YouTube Video Link</label><input type="text" class="widefat" id="wprys_youtube" name="wprys_youtube" value="'.$youtube_link.'" />';
 }
 
 // Save Metadata
@@ -99,14 +99,14 @@ function wprys_widget_init() {
 
 // Widget Class
 class Wprys_Widget extends WP_Widget {
-    function Wprys_Widget() {
-        $widget_options = array(
-            'classname' => 'wprys_class', //CSS
-            'description' => 'Show a YouTube Video from post metadata'
-        );
-
-        $this->WP_Widget('wprys_id', 'YouTube Video', $widget_options);
-    }
+	// Constructor to Create Widget
+	function __construct() {
+		parent::__construct(
+			'wprys_id',
+			__('YouTube Video in Sidebar', 'wprys_domain'),
+			array('description' => __('Show a YouTube Video from post metadata', 'wprys_domain'))
+		);
+	}
 
     // Widget Form
     function form($instance) {
