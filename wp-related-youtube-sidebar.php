@@ -67,19 +67,15 @@ function wprys_add_metabox() {
     add_meta_box('wprys_youtube', 'YouTube Video Link','wprys_youtube_handler', 'post');
 }
 
-/**
- * metabox handler
- */
+// Metabox handler
 function wprys_youtube_handler() {
-    $value = get_post_custom($post->ID);
+    $value = get_post_custom();
     $youtube_link = esc_attr($value['wprys_youtube'][0]);
     // var_dump($value);
     echo '<label for="wprys_youtube">YouTube Video Link</label><input type="text" id="wprys_youtube" name="wprys_youtube" value="'.$youtube_link.'" />';
 }
 
-/**
- * save metadata
- */
+// Save Metadata
 function wprys_save_metabox($post_id) {
     //don't save metadata if it's autosave
     if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
@@ -96,16 +92,12 @@ function wprys_save_metabox($post_id) {
     }
 }
 
-/**
- * register widget
- */
+// Register Widget
 function wprys_widget_init() {
     register_widget('Wprys_Widget');
 }
 
-/**
- * widget class
- */
+// Widget Class
 class Wprys_Widget extends WP_Widget {
     function Wprys_Widget() {
         $widget_options = array(
@@ -116,9 +108,7 @@ class Wprys_Widget extends WP_Widget {
         $this->WP_Widget('wprys_id', 'YouTube Video', $widget_options);
     }
 
-    /**
-     * show widget form in Appearence / Widgets
-     */
+    // Widget Form
     function form($instance) {
         $defaults = array('title' => 'Video');
         $instance = wp_parse_args( (array) $instance, $defaults);
@@ -128,9 +118,7 @@ class Wprys_Widget extends WP_Widget {
         echo '<p>Title <input type="text" class="widefat" name="'.$this->get_field_name('title').'" value="'.$title.'" /></p>';
     }
 
-    /**
-     * save widget form
-     */
+    // Update widget information
     function update($new_instance, $old_instance) {
 
         $instance = $old_instance;
@@ -138,9 +126,7 @@ class Wprys_Widget extends WP_Widget {
         return $instance;
     }
 
-    /**
-     * show widget in post / page
-     */
+    // Show widet frontend
     function widget($args, $instance) {
 
         extract( $args );
@@ -151,27 +137,25 @@ class Wprys_Widget extends WP_Widget {
 
         //show only if single post
         if(is_single()) {
+	        //show only if single post and metadata for video exists
         	if(! empty($wprys_youtube)) {
 
-            echo $before_widget;
-            echo $before_title.$title.$after_title;
+        		echo $args['before_widget'];
+		        echo $args['before_title'] . $title . $args['after_title'];
 
-            //print widget content
-            echo '<iframe frameborder="0" allowfullscreen src="https://www.youtube.com/embed/'.get_yt_videoid($wprys_youtube).'"></iframe>';
-		     echo '<a class="vp-a vp-yt-type" href="https://www.youtube.com/watch?v='.get_yt_videoid($wprys_youtube).'" data-ytid="jM7-jT0WXWE">Click or Full Size</a>';
-            echo $after_widget;
+                //print widget content
+                echo '<iframe frameborder="0" allowfullscreen src="https://www.youtube.com/embed/'.get_yt_videoid($wprys_youtube).'"></iframe>';
+		        echo '<a class="vp-a vp-yt-type" href="https://www.youtube.com/watch?v='.get_yt_videoid($wprys_youtube).'" data-ytid="jM7-jT0WXWE">Click or Full Size</a>';
+		        echo $args['after_widget'];
         	}
         }
     }
 }
 
-/**
- * get youtube video id from link 
- * from: http://stackoverflow.com/questions/3392993/php-regex-to-get-youtube-video-id
- */
+
+// get youtube video id from link
+// from: http://stackoverflow.com/questions/3392993/php-regex-to-get-youtube-video-id
 function get_yt_videoid($url) {
     parse_str( parse_url( $url, PHP_URL_QUERY ), $my_array_of_vars );
     return $my_array_of_vars['v']; 
 }
-
-?>
