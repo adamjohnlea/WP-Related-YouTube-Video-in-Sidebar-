@@ -145,7 +145,7 @@ class Wprys_Widget extends WP_Widget {
 
                 //print widget content
                 echo '<iframe frameborder="0" allowfullscreen src="https://www.youtube.com/embed/'.get_yt_videoid($wprys_youtube).'"></iframe>';
-		        echo '<a class="vp-a vp-yt-type" href="https://www.youtube.com/watch?v='.get_yt_videoid($wprys_youtube).'" data-ytid="jM7-jT0WXWE">Click or Full Size</a>';
+		        echo '<a class="vp-a vp-yt-type" href="https://www.youtube.com/watch?v='.get_yt_videoid($wprys_youtube).'" data-ytid="jM7-jT0WXWE">Click for Full Size</a>';
 		        echo $args['after_widget'];
         	}
         }
