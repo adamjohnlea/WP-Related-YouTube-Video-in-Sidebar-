@@ -6,7 +6,7 @@ Description: Add the URL of a YoutTube video to you post, and that video will di
 Version: 1.0
 Author: Adam John Lea
 Author URI: https://adamjohnlea.com
-License: GPL2
+License: MIT
 */
 
 require_once 'class-tgm-plugin-activation.php';
