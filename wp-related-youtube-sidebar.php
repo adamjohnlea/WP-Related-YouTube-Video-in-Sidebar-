@@ -72,7 +72,7 @@ function wprys_youtube_handler() {
     $value = get_post_custom();
     $youtube_link = esc_attr($value['wprys_youtube'][0]);
     // var_dump($value);
-    echo '<label for="wprys_youtube">YouTube Video Link</label><input type="text" class="widefat" id="wprys_youtube" name="wprys_youtube" value="'.$youtube_link.'" />';
+    echo '<label for="wprys_youtube"> YouTube Video Link </label><input type="text" class="widefat" id="wprys_youtube" name="wprys_youtube" value="'.$youtube_link.'" />';
 }
 
 // Save Metadata
