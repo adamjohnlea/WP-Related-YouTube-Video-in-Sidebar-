@@ -6,7 +6,7 @@ Description: Add the URL of a YoutTube video to you post, and that video will di
 Version: 1.0
 Contributors: adamjlea
 Author: Adam John Lea
-Author URI: https://github.com/adamjohnlea/
+Author URI: https://adamjohnlea.com
 License: GPLv2 or later
 License URI:  https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: wprys
