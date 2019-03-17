@@ -1,12 +1,16 @@
 <?php
 /*
 Plugin Name: WP Related YouTube Video in Sidebar
-Plugin URI: https://adamjohnlea.com
+Plugin URI: https://github.com/adamjohnlea/wp-related-youtube-video-in-sidebar
 Description: Add the URL of a YoutTube video to you post, and that video will display in the sidebar when the single post is viewed. Good for showing related videos that do not belong as part of the actual post.
 Version: 1.0
+Contributors: adamjlea
 Author: Adam John Lea
-Author URI: https://adamjohnlea.com
-License: MIT
+Author URI: https://github.com/adamjohnlea/
+License: GPLv2 or later
+License URI:  https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: wprys
+Domain Path:  /languages
 */
 
 require_once 'class-tgm-plugin-activation.php';
@@ -147,8 +151,9 @@ class Wprys_Widget extends WP_Widget {
                 echo '<iframe frameborder="0" allowfullscreen src="https://www.youtube.com/embed/'.get_yt_videoid($wprys_youtube).'"></iframe>';
 		        echo '<a class="vp-a vp-yt-type" href="https://www.youtube.com/watch?v='.get_yt_videoid($wprys_youtube).'" data-ytid="jM7-jT0WXWE">Click for Full Size</a>';
 		        echo $args['after_widget'];
+
         	}
-        }
+		}
     }
 }
 
